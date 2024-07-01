@@ -1,0 +1,51 @@
+// Get all customers
+GET http://localhost:5000/api/customers
+
+###
+
+// Get customer by id
+GET http://localhost:5000/api/customers/1
+
+###
+
+// Create customer (Success)
+POST http://localhost:5000/api/customers HTTP/1.1
+content-type: application/json
+
+{
+  "full_name": "Test customer",
+  "email": "test@gmail.com",
+  "phone": "937 99 92",
+  "password": "testPassw"
+}
+
+###
+
+// Create customer (With errors)
+POST http://localhost:5000/api/customers HTTP/1.1
+content-type: application/json
+
+{
+  "full_name": "T",
+  "email": "testgmail.com",
+  "password": null
+}
+
+###
+
+// Update customer
+PUT http://localhost:5000/api/customers HTTP/1.1
+content-type: application/json
+
+{
+  "full_name": "Updated customer",
+  "email": "updated@gmail.com",
+  "phone": "8 800 555 35 35",
+  "password": "newPass",
+  "id": 12
+}
+
+###
+
+// Delete customer
+DELETE  http://localhost:5000/api/customers/12 HTTP/1.1

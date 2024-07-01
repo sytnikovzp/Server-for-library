@@ -39,7 +39,7 @@ content-type: application/json
   "full_name": "Updated author",
   "email": "updatedMail@gmail.com",
   "nationality": "FR",
-  "id": 22
+  "id": 21
 }
 
 ###
