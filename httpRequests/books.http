@@ -1,0 +1,54 @@
+// Get all books
+GET http://localhost:5000/api/books
+
+###
+
+// Get book by id
+GET http://localhost:5000/api/books/4
+
+###
+
+// Create book (Success)
+POST http://localhost:5000/api/books HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Test book",
+  "genre": "Western",
+  "shelves": "Shelf #8",
+  "description": "New test book",
+  "image": null
+}
+
+###
+
+// Create book (With errors)
+POST http://localhost:5000/api/books HTTP/1.1
+content-type: application/json
+
+{
+  "title": "T",
+  "genre": null,
+  "shelves": "",
+  "image": null
+}
+
+###
+
+// Update book
+PUT http://localhost:5000/api/books HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Update book",
+  "genre": "Adventures",
+  "shelves": "Shelf #7",
+  "description": "Updated test book",
+  "image": null,
+  "id": 21
+}
+
+###
+
+// Delete book
+DELETE  http://localhost:5000/api/books/28 HTTP/1.1
