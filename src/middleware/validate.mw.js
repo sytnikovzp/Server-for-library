@@ -1,14 +1,14 @@
 const yup = require('yup');
 
-const { PERSON_VALIDATION_SCHEMA } = require('../utils/validationSchemas');
+const { AUTHOR_VALIDATION_SCHEMA } = require('../utils/validationSchemas');
 
-module.exports.validatePerson = async (req, res, next) => {
+module.exports.validateAuthor = async (req, res, next) => {
   const { body } = req;
   try {
-    const validatedPerson = await PERSON_VALIDATION_SCHEMA.validate(body, {
+    const validatedAuthor = await AUTHOR_VALIDATION_SCHEMA.validate(body, {
       abortEarly: false,
     });
-    req.body = validatedPerson;
+    req.body = validatedAuthor;
     next();
   } catch (error) {
     console.log(error.errors);

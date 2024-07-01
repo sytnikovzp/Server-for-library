@@ -1,7 +1,7 @@
 const { Router } = require('express');
 // ============================
 const authorController = require('../controllers/authorController');
-const { validatePerson } = require('../middleware/validate.mw');
+const { validateAuthor } = require('../middleware/validate.mw');
 // ============================
 
 const router = new Router();
@@ -9,8 +9,8 @@ const router = new Router();
 router
   .route('/')
   .get(authorController.getAuthors)
-  .post(validatePerson, authorController.createAuthor)
-  .put(validatePerson, authorController.updateAuthor);
+  .post(validateAuthor, authorController.createAuthor)
+  .put(validateAuthor, authorController.updateAuthor);
 
 router
   .route('/:authorId')
