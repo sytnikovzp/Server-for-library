@@ -3,6 +3,7 @@ const yup = require('yup');
 const AUTHOR_VALIDATION_SCHEMA = yup.object().shape({
   full_name: yup.string().trim().min(2).max(30).required(),
   email: yup.string().email().required(),
+  nationality: yup.string(),
 });
 
 const CUSTOMER_VALIDATION_SCHEMA = yup.object().shape({

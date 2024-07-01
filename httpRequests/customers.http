@@ -42,10 +42,10 @@ content-type: application/json
   "email": "updated@gmail.com",
   "phone": "8 800 555 35 35",
   "password": "newPass",
-  "id": 12
+  "id": 13
 }
 
 ###
 
 // Delete customer
-DELETE  http://localhost:5000/api/customers/12 HTTP/1.1
+DELETE  http://localhost:5000/api/customers/13 HTTP/1.1

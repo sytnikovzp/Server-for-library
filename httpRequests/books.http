@@ -30,6 +30,7 @@ content-type: application/json
   "title": "T",
   "genre": null,
   "shelves": "",
+  "description": null,
   "image": null
 }
 
@@ -45,10 +46,10 @@ content-type: application/json
   "shelves": "Shelf #7",
   "description": "Updated test book",
   "image": null,
-  "id": 21
+  "id": 29
 }
 
 ###
 
 // Delete book
-DELETE  http://localhost:5000/api/books/28 HTTP/1.1
+DELETE  http://localhost:5000/api/books/29 HTTP/1.1

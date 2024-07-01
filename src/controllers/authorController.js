@@ -4,7 +4,7 @@ class AuthorController {
   async getAuthors(req, res) {
     try {
       const authors = await db.query(
-        `SELECT full_name, email, nat.description as nationality, to_char(authors."createdAt"::timestamp, 'YYYY-MM-DD HH24:MI:SS') AS "createdAt", to_char(authors."updatedAt"::timestamp, 'YYYY-MM-DD HH24:MI:SS') AS "updatedAt"
+        `SELECT authors.id, full_name, email, nat.description as nationality, to_char(authors."createdAt"::timestamp, 'YYYY-MM-DD HH24:MI:SS') AS "createdAt", to_char(authors."updatedAt"::timestamp, 'YYYY-MM-DD HH24:MI:SS') AS "updatedAt"
         FROM authors 
         JOIN nationalities as nat
         ON authors.nationality_id = nat.id

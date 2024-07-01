@@ -4,7 +4,7 @@ class CustomerController {
   async getCustomers(req, res) {
     try {
       const customers = await db.query(
-        `SELECT full_name, email, phone, to_char("createdAt"::timestamp, 'YYYY-MM-DD HH24:MI:SS') AS "createdAt", to_char("updatedAt"::timestamp, 'YYYY-MM-DD HH24:MI:SS') AS "updatedAt", password
+        `SELECT id, full_name, email, phone, to_char("createdAt"::timestamp, 'YYYY-MM-DD HH24:MI:SS') AS "createdAt", to_char("updatedAt"::timestamp, 'YYYY-MM-DD HH24:MI:SS') AS "updatedAt", password
         FROM customers 
         ORDER BY id;`
       );
