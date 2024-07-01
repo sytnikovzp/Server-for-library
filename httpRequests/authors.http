@@ -1,0 +1,48 @@
+// Get all authors
+GET http://localhost:5000/api/authors
+
+###
+
+// Get author by id
+GET http://localhost:5000/api/authors/4
+
+###
+
+// Create author (Success)
+POST http://localhost:5000/api/authors HTTP/1.1
+content-type: application/json
+
+{
+  "full_name": "Test author",
+  "email": "test@gmail.com",
+  "nationality": "USA"
+}
+
+###
+
+// Create author (With errors)
+POST http://localhost:5000/api/authors HTTP/1.1
+content-type: application/json
+
+{
+  "full_name": "T",
+  "email": "e-hgmail.com",
+}
+
+###
+
+// Update author
+PUT http://localhost:5000/api/authors HTTP/1.1
+content-type: application/json
+
+{
+  "full_name": "Updated author",
+  "email": "updatedMail@gmail.com",
+  "nationality": "FR",
+  "id": 22
+}
+
+###
+
+// Delete author
+DELETE  http://localhost:5000/api/authors/22 HTTP/1.1

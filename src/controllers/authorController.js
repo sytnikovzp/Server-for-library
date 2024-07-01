@@ -70,12 +70,12 @@ class AuthorController {
 
   async updateAuthor(req, res) {
     try {
-      const { full_name, email, nationality, author_id } = req.body;
+      const { full_name, email, nationality, id } = req.body;
       const updatedAuthor = await db.query(
         `UPDATE authors
         SET full_name=$1, email=$2,
-        nationality_id=(SELECT id FROM nationalities WHERE title = $3) WHERE id=$4 RETURNING *`,
-        [full_name, email, nationality, author_id]
+        nationality_id=(SELECT id FROM nationalities WHERE title = $3), "updatedAt"=NOW() WHERE id=$4 RETURNING *`,
+        [full_name, email, nationality, id]
       );
 
       if (updatedAuthor.rows.length > 0) {
