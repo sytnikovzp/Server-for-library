@@ -56,7 +56,7 @@ class CustomerController {
       if (newCustomer.rows.length > 0) {
         res.status(201).json(newCustomer.rows[0]);
       } else {
-        res.status(404).send('The customer has not been created');
+        res.status(500).send('The customer has not been created');
       }
     } catch (error) {
       console.log(error);

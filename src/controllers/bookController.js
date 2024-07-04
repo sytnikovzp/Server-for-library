@@ -64,7 +64,7 @@ class BookController {
       if (newBook.rows.length > 0) {
         res.status(201).json(newBook.rows[0]);
       } else {
-        res.status(404).send('The book has not been created');
+        res.status(500).send('The book has not been created');
       }
     } catch (error) {
       console.log(error);
