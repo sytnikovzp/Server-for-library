@@ -30,3 +30,14 @@ server.listen(PORT, HOST_NAME, () =>
 );
 
 console.log('Server is started!');
+
+const syncModel = async (model) => {
+  try {
+    await model.sync({ alter: true });
+    console.log(`Sync of ${model.name} has been done successfully!`);
+  } catch (error) {
+    console.log(`Can't sync ${model.name}: `, error.message);
+  }
+};
+
+// syncModel(db.Nationality);
