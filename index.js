@@ -40,4 +40,4 @@ const syncModel = async (model) => {
   }
 };
 
-// syncModel(db.Nationality);
+// syncModel(db.Shelf);
