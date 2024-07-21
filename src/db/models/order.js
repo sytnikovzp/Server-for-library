@@ -18,11 +18,20 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
       },
       order_date: DataTypes.DATE,
-      customer: DataTypes.STRING,
+      customer_id: DataTypes.INTEGER,
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      },
     },
     {
       sequelize,
       modelName: 'Order',
+      tableName: 'orders',
     }
   );
   return Order;

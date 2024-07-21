@@ -9,6 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Genre.hasMany(models.Book, {
+        foreignKey: 'genre_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      });
     }
   }
   Genre.init(
@@ -22,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'Genre',
-      tableName: 'genres'
+      tableName: 'genres',
     }
   );
   return Genre;

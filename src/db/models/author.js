@@ -23,11 +23,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
       },
-      country: DataTypes.STRING,
+      nationality_id: DataTypes.INTEGER,
     },
     {
       sequelize,
       modelName: 'Author',
+      tableName: 'authors',
     }
   );
   return Author;

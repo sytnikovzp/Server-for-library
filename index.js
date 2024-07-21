@@ -41,3 +41,14 @@ const syncModel = async (model) => {
 };
 
 // syncModel(db.Shelf);
+
+const syncModels = async () => {
+  try {
+    await db.sequelize.sync({ alter: true });
+    console.log(`Sync all models has been done successfully!`);
+  } catch (error) {
+    console.log(`Can't sync all models: `, error.message);
+  }
+};
+
+// syncModels();
