@@ -19,8 +19,8 @@ app.use(express.json());
 // ============================
 //  Library APP
 // ============================
-app.use(validationErrorHandler, errorHandler);
 
 app.use('/api', router);
+app.use(validationErrorHandler, errorHandler);
 
 module.exports = app;
