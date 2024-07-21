@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Book.belongsTo(models.Genre, { foreignKey: 'genre_id' });
       Book.belongsTo(models.Shelf, { foreignKey: 'shelf_id' });
+      Book.belongsToMany(models.Author, { through: models.AuthorsBooks });
+      Book.belongsToMany(models.Order, { through: models.OrdersBooks });
     }
   }
   Book.init(
@@ -28,11 +30,20 @@ module.exports = (sequelize, DataTypes) => {
       },
       description: DataTypes.TEXT,
       image: DataTypes.STRING,
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      },
     },
     {
       sequelize,
       modelName: 'Book',
       tableName: 'books',
+      underscored: true,
     }
   );
   return Book;

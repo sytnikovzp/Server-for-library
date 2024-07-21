@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Author.belongsTo(models.Nationality, { foreignKey: 'nationality_id' });
+      Author.belongsToMany(models.Book, { through: models.AuthorsBooks });
     }
   }
   Author.init(
@@ -24,11 +26,20 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
       },
       nationality_id: DataTypes.INTEGER,
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      },
     },
     {
       sequelize,
       modelName: 'Author',
       tableName: 'authors',
+      underscored: true,
     }
   );
   return Author;

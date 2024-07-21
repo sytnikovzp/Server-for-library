@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Order.belongsTo(models.Customer, { foreignKey: 'customer_id' });
+      Order.belongsToMany(models.Book, { through: models.OrdersBooks });
     }
   }
   Order.init(
@@ -32,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'Order',
       tableName: 'orders',
+      underscored: true,
     }
   );
   return Order;

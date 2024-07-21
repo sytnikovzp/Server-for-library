@@ -34,13 +34,14 @@ console.log('Server is started!');
 const syncModel = async (model) => {
   try {
     await model.sync({ alter: true });
+    // await model.sync({ alter: force });
     console.log(`Sync of ${model.name} has been done successfully!`);
   } catch (error) {
     console.log(`Can't sync ${model.name}: `, error.message);
   }
 };
 
-// syncModel(db.Shelf);
+// syncModel(db.authors_books);
 
 const syncModels = async () => {
   try {
