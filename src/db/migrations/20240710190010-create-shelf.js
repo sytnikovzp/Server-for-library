@@ -10,8 +10,8 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       title: {
-        unique: true,
         type: Sequelize.STRING,
+        unique: true,
       },
       description: {
         type: Sequelize.TEXT,

@@ -10,9 +10,9 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       title: {
+        type: Sequelize.STRING,
         allowNull: false,
         unique: true,
-        type: Sequelize.STRING,
       },
       genre_id: {
         type: Sequelize.INTEGER,

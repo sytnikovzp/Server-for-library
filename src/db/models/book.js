@@ -29,7 +29,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
       },
       description: DataTypes.TEXT,
-      image: DataTypes.STRING,
       createdAt: {
         type: DataTypes.DATE,
         allowNull: true,
@@ -38,6 +37,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         allowNull: true,
       },
+      image: DataTypes.STRING,
     },
     {
       sequelize,

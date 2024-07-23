@@ -6,12 +6,13 @@ const db = require('./src/db/models');
 const app = require('./src/app');
 // ============================
 
-// Create server with HTTP module
+// =========== Create server with HTTP module ===========
 const HOST_NAME = process.env.DB_HOST;
 
 const PORT = process.env.PORT || 5000;
 const server = http.createServer(app);
 
+// ==================== DB CHECK =======================
 const dbCheck = async () => {
   try {
     await db.sequelize.authenticate();
@@ -30,6 +31,8 @@ server.listen(PORT, HOST_NAME, () =>
 );
 
 console.log('Server is started!');
+
+// ======================= SYNC =======================
 
 const syncModel = async (model) => {
   try {

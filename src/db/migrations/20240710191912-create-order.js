@@ -10,8 +10,8 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       title: {
-        unique: true,
         type: Sequelize.STRING,
+        unique: true,
       },
       order_date: {
         type: Sequelize.DATE,

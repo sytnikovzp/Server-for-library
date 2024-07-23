@@ -1,26 +1,37 @@
-const db = require('../../db');
+const createError = require('http-errors');
+
+const { Book, Genre, Shelf, sequelize } = require('../db/models');
 
 class BookController {
-  async getBooks(req, res) {
+  async getBooks(req, res, next) {
     try {
-      const books = await db.query(
-        `SELECT books.id, books.title, gen.title as genre, shelf.title as shelves, books.description, to_char(books."createdAt"::timestamp, 'YYYY-MM-DD HH24:MI:SS') AS "createdAt", to_char(books."updatedAt"::timestamp, 'YYYY-MM-DD HH24:MI:SS') AS "updatedAt", image
-        FROM books 
-        JOIN genres as gen
-        ON books.genre_id = gen.id
-        JOIN shelves as shelf
-        ON books.shelf_id = shelf.id
-        ORDER BY books.id;;`
-      );
-
-      if (books.rows.length > 0) {
-        res.status(200).json(books.rows);
+      const { limit, offset } = req.pagination;
+      const books = await Book.findAll({
+        attributes: ['id', 'title'],
+        include: [
+          {
+            model: Genre,
+            attributes: ['title'],
+          },
+          {
+            model: Shelf,
+            attributes: ['title'],
+          },
+        ],
+        raw: true,
+        limit,
+        offset,
+        order: [['id', 'DESC']],
+      });
+      if (books.length > 0) {
+        console.log(`Result is: ${JSON.stringify(books, null, 2)}`);
+        res.status(200).json(books);
       } else {
-        res.status(404).send('Books not found');
+        next(createError(404, 'Books not found'));
       }
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ error: 'Internal server error' });
+      console.log(error.message);
+      next(error.message);
     }
   }
 

@@ -24,13 +24,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         unique: true,
       },
-      phone: DataTypes.STRING,
-      password: {
+      phone: {
         type: DataTypes.STRING,
-        allowNull: false,
-        set(value) {
-          this.setDataValue('password', bcrypt.hashSync(value, 10));
-        },
       },
       createdAt: {
         type: DataTypes.DATE,
@@ -39,6 +34,13 @@ module.exports = (sequelize, DataTypes) => {
       updatedAt: {
         type: DataTypes.DATE,
         allowNull: true,
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        set(value) {
+          this.setDataValue('password', bcrypt.hashSync(value, 10));
+        },
       },
     },
     {

@@ -3,7 +3,7 @@ const yup = require('yup');
 const {
   AUTHOR_VALIDATION_SCHEMA,
   CUSTOMER_VALIDATION_SCHEMA,
-  BOOK_VALIDATION_SCHEMA,
+  NEW_BOOK_VALIDATION_SCHEMA,
 } = require('../utils/validationSchemas');
 
 module.exports.validateAuthor = async (req, res, next) => {
@@ -37,7 +37,7 @@ module.exports.validateCustomer = async (req, res, next) => {
 module.exports.validateBook = async (req, res, next) => {
   const { body } = req;
   try {
-    const validatedBook = await BOOK_VALIDATION_SCHEMA.validate(body, {
+    const validatedBook = await NEW_BOOK_VALIDATION_SCHEMA.validate(body, {
       abortEarly: false,
     });
     req.body = validatedBook;
