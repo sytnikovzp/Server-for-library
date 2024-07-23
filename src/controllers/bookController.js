@@ -35,24 +35,30 @@ class BookController {
     }
   }
 
-  async getBookById(req, res) {
+  async getBookById(req, res, next) {
     try {
       const {
         params: { bookId },
       } = req;
-      const book = await db.query(
-        `SELECT books.id, books.title, gen.title as genre, shelf.title as shelves, books.description, to_char(books."createdAt"::timestamp, 'YYYY-MM-DD HH24:MI:SS') AS "createdAt", to_char(books."updatedAt"::timestamp, 'YYYY-MM-DD HH24:MI:SS') AS "updatedAt", image
-        FROM books 
-        JOIN genres as gen
-        ON books.genre_id = gen.id
-        JOIN shelves as shelf
-        ON books.shelf_id = shelf.id
-        WHERE books.id = $1`,
-        [bookId]
-      );
 
-      if (book.rows.length > 0) {
-        res.status(200).json(book.rows[0]);
+      const book = await Book.findOne({
+        where: { id: bookId },
+        attributes: ['id', 'title'],
+        include: [
+          {
+            model: Genre,
+            attributes: [['title', 'genre']],
+          },
+          {
+            model: Shelf,
+            attributes: [['title', 'shelves']],
+          },
+        ],
+        raw: true,
+      });
+
+      if (book) {
+        res.status(200).json(book);
       } else {
         res.status(404).send('Book not found');
       }
