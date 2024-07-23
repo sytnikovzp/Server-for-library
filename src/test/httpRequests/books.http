@@ -4,7 +4,7 @@ GET http://localhost:5000/api/books
 ###
 
 // Get book by id
-GET http://localhost:5000/api/books/18
+GET http://localhost:5000/api/books/17
 
 ###
 
@@ -13,7 +13,7 @@ POST http://localhost:5000/api/books HTTP/1.1
 content-type: application/json
 
 {
-  "title": "Test book",
+  "title": "New book",
   "genre": "Western",
   "shelves": "Shelf #8",
   "description": "New test book",
@@ -27,11 +27,7 @@ POST http://localhost:5000/api/books HTTP/1.1
 content-type: application/json
 
 {
-  "title": "T",
-  "genre": null,
-  "shelves": "",
-  "description": null,
-  "image": null
+  "title": "Tww",
 }
 
 ###

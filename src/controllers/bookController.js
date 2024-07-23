@@ -58,13 +58,14 @@ class BookController {
       });
 
       if (book) {
+        console.log(`Result is: ${JSON.stringify(book, null, 2)}`);
         res.status(200).json(book);
       } else {
-        res.status(404).send('Book not found');
+        next(createError(404, 'Book not found!'));
       }
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ error: 'Internal server error' });
+      console.log(error.message);
+      next(error.message);
     }
   }
 
